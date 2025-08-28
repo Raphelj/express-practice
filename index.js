@@ -3,11 +3,19 @@ import students from './routes/students.js'
 import teachers from './routes/teachers.js'
 import products from './routes/products.js'
 import userCredentials from './middlewares/log.js'
+import path  from 'path'
 
 const app=express()
 
 app.use('/students', students)
 app.use('/teachers', teachers)
+
+//Static files in express
+app.use(express.static('./public'))
+
+app.get('/',(req,res)=>{
+    res.sendFile(path.join(process.cwd(),"./public/index.html"))
+})
 
 //Middleware
 app.use(userCredentials)
