@@ -2,11 +2,18 @@ import express from 'express'
 import students from './routes/students.js'
 import teachers from './routes/teachers.js'
 import products from './routes/products.js'
+import userCredentials from './middlewares/log.js'
 
 const app=express()
 
 app.use('/students', students)
 app.use('/teachers', teachers)
+
+//Middleware
+app.use(userCredentials)
+app.get("/",(req,res)=>{
+    res.send("<h1>Hello welcome</h1>")
+})
 
 //send json response
 app.get('/products',(req,res)=>{
