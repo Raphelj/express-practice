@@ -15,6 +15,10 @@ app.get("/",(req,res)=>{
     res.send("<h1>Hello welcome</h1>")
 })
 
+app.get('/about',(req,res)=>{
+    res.send("<h1>About Page</h1>")
+})
+
 //send json response
 app.get('/products',(req,res)=>{
     res.json(products)
